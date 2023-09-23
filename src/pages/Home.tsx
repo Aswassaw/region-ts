@@ -230,11 +230,17 @@ class Home extends Component<HomeProps, HomeState> {
                 </div>
               </div>
             ) : (
-              <SelectList
-                title="Pilih Provinsi"
-                data={this.state.provinces.data}
-                fetchOther={this.fetchRegencies}
-              />
+              <>
+                {this.state.provinces.isError ? (
+                  <p>{this.state.provinces.errorMessage}</p>
+                ) : (
+                  <SelectList
+                    title="Pilih Provinsi"
+                    data={this.state.provinces.data}
+                    fetchOther={this.fetchRegencies}
+                  />
+                )}
+              </>
             )}
           </div>
           <div className="mb-3">
@@ -245,11 +251,17 @@ class Home extends Component<HomeProps, HomeState> {
                 </div>
               </div>
             ) : (
-              <SelectList
-                title="Pilih Kabupaten / Kota"
-                data={this.state.regencies.data}
-                fetchOther={this.fetchSubdistricts}
-              />
+              <>
+                {this.state.regencies.isError ? (
+                  <p>{this.state.regencies.errorMessage}</p>
+                ) : (
+                  <SelectList
+                    title="Pilih Kabupaten / Kota"
+                    data={this.state.regencies.data}
+                    fetchOther={this.fetchSubdistricts}
+                  />
+                )}
+              </>
             )}
           </div>
           <div className="mb-3">
@@ -260,11 +272,17 @@ class Home extends Component<HomeProps, HomeState> {
                 </div>
               </div>
             ) : (
-              <SelectList
-                title="Pilih Kecamatan"
-                data={this.state.subdistricts.data}
-                fetchOther={this.fetchWards}
-              />
+              <>
+                {this.state.subdistricts.isError ? (
+                  <p>{this.state.subdistricts.errorMessage}</p>
+                ) : (
+                  <SelectList
+                    title="Pilih Kecamatan"
+                    data={this.state.subdistricts.data}
+                    fetchOther={this.fetchWards}
+                  />
+                )}
+              </>
             )}
           </div>
           <div className="mb-3">
@@ -275,10 +293,16 @@ class Home extends Component<HomeProps, HomeState> {
                 </div>
               </div>
             ) : (
-              <SelectList
-                title="Pilih Kelurahan / Desa"
-                data={this.state.wards.data}
-              />
+              <>
+                {this.state.wards.isError ? (
+                  <p>{this.state.wards.errorMessage}</p>
+                ) : (
+                  <SelectList
+                    title="Pilih Kelurahan / Desa"
+                    data={this.state.wards.data}
+                  />
+                )}
+              </>
             )}
           </div>
         </div>
